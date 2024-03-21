@@ -1,0 +1,73 @@
+[2024-03-06 23:44:28] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:44:28] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:44:29] local.DEBUG: Update of all apps triggered!  
+[2024-03-06 23:44:29] local.DEBUG: Update of all apps finished!  
+[2024-03-06 23:44:29] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:52:02] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:52:11] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:31] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:34] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:34] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:34] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:35] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:40] local.DEBUG: Process Apps dispatched  
+[2024-03-06 23:53:40] local.DEBUG: Get app triggered for: f519bce8b0ae84d8dbbc0a793bf6a180043be855  
+[2024-03-06 23:53:40] local.DEBUG: Download triggered for stdClass Object
+(
+    [appid] => f519bce8b0ae84d8dbbc0a793bf6a180043be855
+    [name] => Grafana
+    [website] => https://grafana.com
+    [license] => Apache License 2.0
+    [description] => Data visualization & Monitoring with support for Graphite, InfluxDB, Prometheus, Elasticsearch and many more databases.
+    [enhanced] => 
+    [tile_background] => dark
+    [icon] => grafana.svg
+    [sha] => 67b005836b89b24a4bea06e4df65bf593a6b0b94
+    [class] => App\SupportedApps\Grafana\Grafana
+)
+  
+[2024-03-06 23:56:20] local.DEBUG: Get app triggered for: 07b796b3a10eaa8b6f485ed2379187a39400b459  
+[2024-03-06 23:56:20] local.DEBUG: Download triggered for stdClass Object
+(
+    [appid] => 07b796b3a10eaa8b6f485ed2379187a39400b459
+    [name] => Portainer
+    [website] => https://portainer.io
+    [license] => zlib License
+    [description] => Portainer is a simple management solution for Docker. Easily manage your Docker hosts and Docker Swarm clusters via Portainer web user interface.
+    [enhanced] => 1
+    [tile_background] => dark
+    [icon] => portainer.svg
+    [sha] => 5c3423fa97a8bdb7703c6d9a178339ee0d0c53a4
+    [class] => App\SupportedApps\Portainer\Portainer
+)
+  
+[2024-03-06 23:57:39] local.DEBUG: Get app triggered for: b89920409bdce40e08ba1023480b0546061cd577  
+[2024-03-06 23:57:39] local.DEBUG: Download triggered for stdClass Object
+(
+    [appid] => b89920409bdce40e08ba1023480b0546061cd577
+    [name] => Pi-hole
+    [website] => https://pi-hole.net
+    [license] => European Union Public License 1.2
+    [description] => Pi-hole is a Linux network-level advertisement and internet tracker blocking application which acts as a DNS sinkhole, intended for use on a private network.
+    [enhanced] => 1
+    [tile_background] => dark
+    [icon] => pihole.svg
+    [sha] => 4d6b2160d0f1f9349e63f06e7a6d91d7d209c977
+    [class] => App\SupportedApps\Pihole\Pihole
+)
+  
+[2024-03-06 23:58:30] local.DEBUG: Get app triggered for: afef2217e82ee20638490bb102605f6e09789093  
+[2024-03-06 23:58:30] local.DEBUG: Download triggered for stdClass Object
+(
+    [appid] => afef2217e82ee20638490bb102605f6e09789093
+    [name] => WireGuard
+    [website] => https://www.wireguard.com
+    [license] => CNRI Python Open Source GPL Compatible License Agreement
+    [description] => WireGuard® is an extremely simple yet fast and modern VPN that utilizes state-of-the-art cryptography. It aims to be faster, simpler, leaner, and more useful than IPsec, while avoiding the massive headache. It intends to be considerably more performant than OpenVPN. WireGuard is designed as a general purpose VPN for running on embedded interfaces and super computers alike, fit for many different circumstances. Initially released for the Linux kernel, it is now cross-platform (Windows, macOS, BSD, iOS, Android) and widely deployable. It is currently under heavy development, but already it might be regarded as the most secure, easiest to use, and simplest VPN solution in the industry.
+    [enhanced] => 
+    [tile_background] => dark
+    [icon] => wireguard.png
+    [sha] => 5c05f64749725c3179f109d21977d086101b3ee7
+    [class] => App\SupportedApps\WireGuard\WireGuard
+)
+  
