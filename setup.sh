@@ -36,10 +36,11 @@ fi
 #        sudo chown -R 65534:65534 $rutaScript/docker/monitorizacion/prometheus  > /dev/null
 #fi
 echo "Arrancando contenedores..."
+sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/monitoring/docker-compose.yml up -d
+sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d
+sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d
 
