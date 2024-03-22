@@ -30,6 +30,8 @@ fi
 # Clonar repositorio para monitorización si no está ya clonado
 if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
         git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/
+        sudo chown -R 472:472 $rutaScript
+        sudo chown -R 65534:65534 $rutaScript
 fi
 
 sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
