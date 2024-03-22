@@ -29,16 +29,17 @@ else
 fi
 
 # Clonar repositorio para monitorización si no está ya clonado
-if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
-        sudo git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/ > /dev/null
-        sudo chmod -R 777 $rutaScript
-        sudo chown -R 472:472 $rutaScript/docker/monitorizacion/grafana  > /dev/null
-        sudo chown -R 65534:65534 $rutaScript/docker/monitorizacion/prometheus  > /dev/null
-fi
+#if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
+#        sudo git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/ > /dev/null
+#        sudo chmod -R 777 $rutaScript
+#        sudo chown -R 472:472 $rutaScript/docker/monitorizacion/grafana  > /dev/null
+#        sudo chown -R 65534:65534 $rutaScript/docker/monitorizacion/prometheus  > /dev/null
+#fi
 echo "Arrancando contenedores..."
 sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
+sudo docker compose -f "$rutaScript"/docker/monitoring/docker-compose.yml up -d
 
