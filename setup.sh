@@ -3,8 +3,12 @@
 # Obtiene la ruta del directorio que contiene este script.
 rutaScript=$(dirname "${BASH_SOURCE[0]}")
 
+# Comprobar actualización
+sudo apt-get update -y
+sudo apt-get upgrade -y
+
 # Instalación docker
-sudo curl -fsSL https://get.docker.com/ -o get-docker.sh
+curl -sSL https://get.docker.com | sh
 sudo sh get-docker.sh
 sudo usermod -aG docker ${USER}
 
@@ -18,5 +22,5 @@ sudo docker compose -f $rutaScript/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/filebrowser/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/heimdall/docker-compose.yml up -d
-sudo docker compose -f $rutaScript/docker/monitoring/docker-compose.yml up -d
+git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git
 
