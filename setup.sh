@@ -22,5 +22,5 @@ sudo docker compose -f $rutaScript/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/filebrowser/docker-compose.yml up -d
 sudo docker compose -f $rutaScript/docker/heimdall/docker-compose.yml up -d
-git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git
+git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git $rutaScript/docker/monitorizacion/
 
