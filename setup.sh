@@ -24,7 +24,7 @@ if [ ! "$(sudo docker ps -f name=portainer)" ]; then
     sudo docker volume create portainer_data
     sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
 else
-    echo "Docker no está disponible. Portainer no se puede instalar."
+    echo "Portainer ya está instalado."
 fi
 
 # Clonar repositorio para monitorización si no está ya clonado
