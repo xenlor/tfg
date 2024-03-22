@@ -8,6 +8,9 @@ echo "Actualizando repertorios..."
 sudo apt-get update -y > /dev/null
 sudo apt-get upgrade -y > /dev/null
 
+# Instalar Fail2Ban
+sudo apt install fail2ban -y > /dev/null
+
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
