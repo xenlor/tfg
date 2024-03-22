@@ -4,8 +4,9 @@
 rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 # Comprobar actualización
-sudo apt-get update -y
-sudo apt-get upgrade -y
+echo "Actualizando repertorios..."
+sudo apt-get update -y > /dev/null
+sudo apt-get upgrade -y > /dev/null
 
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
@@ -29,11 +30,11 @@ fi
 
 # Clonar repositorio para monitorización si no está ya clonado
 if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
-        sudo git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/
-        sudo chown -R 472:472 $rutaScript
-        sudo chown -R 65534:65534 $rutaScript
+        sudo git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/ > /dev/null
+        sudo chown -R 472:472 $rutaScript  > /dev/null
+        sudo chown -R 65534:65534 $rutaScript  > /dev/null
 fi
-
+echo "Arrancando contenedores..."
 sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
