@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 # Obtiene la ruta del directorio que contiene este script.
 rutaScript=$(dirname "${BASH_SOURCE[0]}")
