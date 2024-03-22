@@ -31,7 +31,7 @@ fi
 # Clonar repositorio para monitorización si no está ya clonado
 if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
         sudo git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/ > /dev/null
-        sudo chmod -R g+w $rutaScript/docker/monitorizacion
+        sudo chmod -R 775 $rutaScript
         sudo chown -R 472:472 $rutaScript/docker/monitorizacion/grafana  > /dev/null
         sudo chown -R 65534:65534 $rutaScript/docker/monitorizacion/prometheus  > /dev/null
 fi
