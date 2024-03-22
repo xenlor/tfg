@@ -36,4 +36,5 @@ sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
+sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
 
