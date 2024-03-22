@@ -27,17 +27,12 @@ else
     echo "Docker no está disponible. Portainer no se puede instalar."
 fi
 
-# Ejecución de Docker Compose (solo si Docker Compose se ha instalado/verificado correctamente)
-if command -v docker-compose &> /dev/null; then
-    sudo docker-compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
-    sudo docker-compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
-    sudo docker-compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
-    sudo docker-compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
+sudo docker-compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
+sudo docker-compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
+sudo docker-compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
+sudo docker-compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
 
-    # Clonar repositorio para monitorización si no está ya clonado
-    if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
+# Clonar repositorio para monitorización si no está ya clonado
+if [ ! -d "$rutaScript/docker/monitorizacion" ]; then
         git clone https://github.com/oijkn/Docker-Raspberry-PI-Monitoring.git "$rutaScript"/docker/monitorizacion/
-    fi
-else
-    echo "Docker Compose no está disponible. Los contenedores no se pueden iniciar."
 fi
