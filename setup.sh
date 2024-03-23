@@ -71,7 +71,7 @@ case $opcion in
     *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
 esac
 
-echo
+echo ""
 echo "Arrancando contenedores..."
 sudo docker compose -f "$rutaScript"/docker/authelia/docker-compose.yml up -d 2> /dev/null
 sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d 2> /dev/null
