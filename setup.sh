@@ -1,5 +1,5 @@
 #!/bin/bash
-
+clear
 # Obtiene la ruta del directorio que contiene este script.
 rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
@@ -7,9 +7,10 @@ sudo chmod -R 777 $rutaScript
 
 # Comprobar actualización
 echo "Actualizando repertorios..."
-sudo apt-get update -y 2> /dev/null
-sudo apt-get upgrade -y 2> /dev/null
+sudo apt-get update -y &> /dev/null
+sudo apt-get upgrade -y &> /dev/null
 echo "Repertorios actualizados correctamente."
+
 
 # Comprobar si Fail2Ban ya está instalado
 if ! command -v fail2ban-client &> /dev/null; then
@@ -19,11 +20,12 @@ if ! command -v fail2ban-client &> /dev/null; then
 else
     echo "Fail2Ban ya está instalado."
 fi
+
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
     # Instalación de Docker
-    curl -sSL https://get.docker.com | sh  2> /dev/null
+    curl -sSL https://get.docker.com | sh  > /dev/null
     # Añade el usuario actual al grupo docker
     echo "Usuario '"$USER"' añadido al grupo 'docker'."
     sudo usermod -aG docker "$USER"  > /dev/null
@@ -42,14 +44,31 @@ else
     echo "Portainer ya está instalado."
 fi
 
-./home/pi/ruta.sh
+read -sp "Presiona enter para continuar con la configuración de los contenedores..."
+
+clear
+# Configurar Wireguard + Pihole
+read -p "Quieres crear una nueva configuración de Wireguard? [y/n] " opcion
+case $opcion in
+    [Yy]* ) sudo $rutaScript/docker/wg-pihole/config.sh;;
+    *) echo "Se usará la configuración por defecto.";;
+esac
+
+clear
+# Configurar DDNS Cloudflare
+read -p "Quieres crear una nueva configuración de DDNS? [y/n] " opcion
+case $opcion in
+    [Yy]* ) sudo $rutaScript/docker/cloudflare/config.sh;;
+    *) echo "Se usará la configuración por defecto.";;
+esac
+
 
 echo "Arrancando contenedores..."
-sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d
-sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d
+sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d 2> /dev/null
+sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d 2> /dev/null
 
