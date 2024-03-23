@@ -1,7 +1,8 @@
-version: '2'
+
 services:
   cloudflare-ddns:
     image: oznu/cloudflare-ddns:latest
+    container_name: 'cloudflare'
     restart: always
     environment:
       - API_KEY=c0kJHmj44XEaGndchtIypJ8B9I06ZF3ZXJTfz5WA
