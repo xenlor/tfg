@@ -7,20 +7,20 @@ sudo chmod -R 777 $rutaScript
 
 # Comprobar actualización
 echo "Actualizando repertorios..."
-sudo apt-get update -y > /dev/null
-sudo apt-get upgrade -y > /dev/null
+sudo apt-get update -y 2> /dev/null
+sudo apt-get upgrade -y 2> /dev/null
 echo "Repertorios actualizados correctamente."
 
 # Instalar Fail2Ban
 echo "Instalando Fail2Ban..."
-sudo apt install fail2ban -y > /dev/null
+sudo apt install fail2ban -y 2> /dev/null
 echo "Fail2Ban instalado correctamente."
 
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
     # Instalación de Docker
-    curl -sSL https://get.docker.com | sh  > /dev/null
+    curl -sSL https://get.docker.com | sh  2> /dev/null
     # Añade el usuario actual al grupo docker
     echo "Usuario '"$USER"' añadido al grupo 'docker'."
     sudo usermod -aG docker "$USER"  > /dev/null
