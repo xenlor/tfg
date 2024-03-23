@@ -39,6 +39,8 @@ else
     echo "Portainer ya está instalado."
 fi
 
+./home/pi/ruta.sh
+
 echo "Arrancando contenedores..."
 sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
 sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
