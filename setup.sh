@@ -15,7 +15,7 @@ echo "Repertorios actualizados correctamente."
 # Comprobar si Fail2Ban ya está instalado
 if ! command -v fail2ban-client &> /dev/null; then
     echo "Fail2Ban no está instalado. Instalando Fail2Ban..."
-    sudo apt install fail2ban -y 2> /dev/null
+    sudo apt install fail2ban -y &> /dev/null
     echo "Fail2Ban instalado correctamente."
 else
     echo "Fail2Ban ya está instalado."
@@ -24,7 +24,7 @@ fi
 # Comprobar si Samba ya está instalado
 if ! command -v smbpasswd &> /dev/null; then
     echo "Samba no está instalado. Instalando Samba..."
-    sudo apt install samba -y 2> /dev/null
+    sudo apt install samba -y &> /dev/null
     echo "Samba instalado correctamente."
 else
     echo "Samba ya está instalado."
@@ -34,10 +34,10 @@ fi
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
     # Instalación de Docker
-    curl -sSL https://get.docker.com | sh  > /dev/null
+    curl -sSL https://get.docker.com | sh  &> /dev/null
     # Añade el usuario actual al grupo docker
     echo "Usuario '"$USER"' añadido al grupo 'docker'."
-    sudo usermod -aG docker "$USER"  > /dev/null
+    sudo usermod -aG docker "$USER"  &> /dev/null
     echo "Docker instalado correctamente."
 else
     echo "Docker ya está instalado."
@@ -71,7 +71,7 @@ case $opcion in
     *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
 esac
 
-
+echo
 echo "Arrancando contenedores..."
 sudo docker compose -f "$rutaScript"/docker/authelia/docker-compose.yml up -d 2> /dev/null
 sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d 2> /dev/null
