@@ -3,6 +3,8 @@
 # Obtiene la ruta del directorio que contiene este script.
 rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
+sudo chmod -R 777 $rutaScript
+
 # Comprobar actualización
 echo "Actualizando repertorios..."
 sudo apt-get update -y > /dev/null
