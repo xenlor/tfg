@@ -60,7 +60,7 @@ clear
 read -p "Quieres crear una nueva configuración de Wireguard? [y/n] " opcion
 case $opcion in
     [Yy]* ) sudo $rutaScript/docker/wg-pihole/config.sh;;
-    *) echo "Se usará la configuración por defecto.";;
+    *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
 esac
 
 clear
@@ -68,7 +68,7 @@ clear
 read -p "Quieres crear una nueva configuración de DDNS? [y/n] " opcion
 case $opcion in
     [Yy]* ) sudo $rutaScript/docker/cloudflare/config.sh;;
-    *) echo "Se usará la configuración por defecto.";;
+    *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
 esac
 
 
