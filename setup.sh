@@ -11,11 +11,14 @@ sudo apt-get update -y 2> /dev/null
 sudo apt-get upgrade -y 2> /dev/null
 echo "Repertorios actualizados correctamente."
 
-# Instalar Fail2Ban
-echo "Instalando Fail2Ban..."
-sudo apt install fail2ban -y 2> /dev/null
-echo "Fail2Ban instalado correctamente."
-
+# Comprobar si Fail2Ban ya está instalado
+if ! command -v fail2ban-client &> /dev/null; then
+    echo "Fail2Ban no está instalado. Instalando Fail2Ban..."
+    sudo apt install fail2ban -y 2> /dev/null
+    echo "Fail2Ban instalado correctamente."
+else
+    echo "Fail2Ban ya está instalado."
+fi
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
