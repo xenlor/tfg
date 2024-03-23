@@ -21,6 +21,15 @@ else
     echo "Fail2Ban ya está instalado."
 fi
 
+# Comprobar si Samba ya está instalado
+if ! command -v smbpasswd &> /dev/null; then
+    echo "Samba no está instalado. Instalando Samba..."
+    sudo apt install samba -y 2> /dev/null
+    echo "Samba instalado correctamente."
+else
+    echo "Samba ya está instalado."
+fi
+
 # Comprobar si Docker ya está instalado
 if ! command -v docker &> /dev/null; then
     echo "Docker no está instalado. Instalando Docker..."
