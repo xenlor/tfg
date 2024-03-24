@@ -5,12 +5,16 @@ rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 sudo chmod -R 777 $rutaScript
 
+# Montar disco duro automáticamente
+sudo bash -c 'cat >> /etc/fstab << EOF
+/dev/sda /mnt/hdd auto defaults,noatime,nofail   0   0
+EOF'
+
 # Comprobar actualización
 echo "Actualizando repertorios..."
 sudo apt-get update -y &> /dev/null
 sudo apt-get upgrade -y &> /dev/null
 echo "Repertorios actualizados correctamente."
-
 
 # Comprobar si Fail2Ban ya está instalado
 if ! command -v fail2ban-client &> /dev/null; then
