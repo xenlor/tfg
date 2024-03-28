@@ -5,10 +5,20 @@ rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 sudo chmod -R 777 $rutaScript
 
-# Montar disco duro automáticamente
+# Crear RAID 1 con discos
+discos=$(lsblk -dpno NAME,SIZE | grep "931.5G" | awk '{print $1}')
+discos_array=($discos)
+sudo apt install mdadm -y
+sudo umount ${discos_array[0]} 2> /dev/null
+sudo umount ${discos_array[1]} 2> /dev/null
+sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 ${discos_array[0]} ${discos_array[1]}
+sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
+sudo update-initramfs -u
+sudo mkfs.ext4 /dev/md0
 sudo bash -c 'cat >> /etc/fstab << EOF
-/dev/sda /mnt/hdd auto defaults,noatime,nofail   0   0
+/dev/md0    /mnt/raid   ext4    defaults    0   2
 EOF'
+sudo mount -a
 
 # Comprobar actualización
 echo "Actualizando repertorios..."
