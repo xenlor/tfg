@@ -19,7 +19,11 @@ installApps(){
     sudo apt-get upgrade -y
     sudo apt install samba -y
     sudo apt install fail2ban -y
-    curl -sSL https://get.docker.com | sh
+    if [ ! sudo docker ps -a | grep portainer ]; then
+        curl -sSL https://get.docker.com | sh
+    else
+        echo "Docker ya está instalado"
+    fi
 }
 
 dockerContainers(){
