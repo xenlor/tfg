@@ -14,12 +14,20 @@ crearRaid(){
     sudo chmod -R 777 /mnt/hdd/
 }
 
-installApps(){  
+installApps(){
     sudo apt-get update -y
     sudo apt-get upgrade -y
-    sudo apt install samba -y
-    sudo apt install fail2ban -y
-    if [ ! sudo docker ps -a | grep portainer ]; then
+    if ! command -v smbpasswd; then
+        sudo apt install samba -y
+    else
+        echo "Samba ya está instalado."
+    fi
+    if ! command -v fail2ban; then
+        sudo apt install fail2ban -y
+    else
+        echo "Fail2Ban ya está instalado."
+    fi
+    if ! command -v docker; then
         curl -sSL https://get.docker.com | sh
     else
         echo "Docker ya está instalado"
