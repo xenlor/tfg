@@ -17,17 +17,17 @@ crearRaid(){
 installApps(){
     sudo apt-get update -y
     sudo apt-get upgrade -y
-    if ! command -v smbpasswd; then
+    if ! command -v smbpasswd &> /dev/null; then
         sudo apt install samba -y
     else
         echo "Samba ya está instalado."
     fi
-    if ! command -v fail2ban; then
+    if ! command -v fail2ban-client &> /dev/null; then
         sudo apt install fail2ban -y
     else
         echo "Fail2Ban ya está instalado."
     fi
-    if ! command -v docker; then
+    if ! command -v docker &> /dev/null; then
         curl -sSL https://get.docker.com | sh
     else
         echo "Docker ya está instalado"
@@ -35,7 +35,7 @@ installApps(){
 }
 
 dockerContainers(){
-    if [ ! "$(sudo docker ps -a | grep portainer)" ]; then
+    if ! sudo docker ps -a | grep portainer; then
         sudo docker volume create portainer_data
         sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
     else
@@ -44,3 +44,4 @@ dockerContainers(){
 }
 
 installApps
+dockerContainers
