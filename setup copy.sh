@@ -13,6 +13,11 @@ crearRaid(){
     sudo mount -a
     sudo chmod -R 777 /mnt/hdd/
 }
+existe(){
+    if [ -e /dev/md0 ]; then
+        echo "El RAID /dev/md0 ya existe"
+    fi
+}
 
 installApps(){
     sudo apt-get update -y
@@ -35,7 +40,7 @@ installApps(){
 }
 
 dockerContainers(){
-    if ! sudo docker ps -a | grep portainer; then
+    if ! sudo docker ps -a | grep portainer &> /dev/null; then
         sudo docker volume create portainer_data
         sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
     else
@@ -45,3 +50,4 @@ dockerContainers(){
 
 installApps
 dockerContainers
+existe
