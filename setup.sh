@@ -1,98 +1,85 @@
 #!/bin/bash
+
 clear
-# Obtiene la ruta del directorio que contiene este script.
 rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
-sudo chmod -R 777 $rutaScript
-
-# Crear RAID 1 con discos
-discos=$(lsblk -dpno NAME,SIZE | grep "931.5G" | awk '{print $1}')
-discos_array=($discos)
-sudo apt install mdadm -y
-sudo umount ${discos_array[0]} 2> /dev/null
-sudo umount ${discos_array[1]} 2> /dev/null
-sudo mdadm --create --verbose /dev/md0 --level=1 --raid-devices=2 ${discos_array[0]} ${discos_array[1]}
-sudo mdadm --detail --scan | sudo tee -a /etc/mdadm/mdadm.conf
-sudo update-initramfs -u
-sudo mkfs.ext4 /dev/md0
-sudo bash -c 'cat >> /etc/fstab << EOF
-/dev/md0    /mnt/raid   ext4    defaults    0   2
+crearRaid(){
+    sudo apt install mdadm -y
+    sudo lsblk -d -o NAME,SIZE 
+    read -p "ingresa el nombre de los discos, separados por un espacio (ej. /dev/sda1 /dev/sdb1): " disco1 disco2
+    if [ -z $disco1 ] || [ -z $disco2 ];then
+        echo "Error: Debes ingresar dos discos para hacer el RAID 0."
+    else
+        echo "Disco 1: $disco1"
+        echo "Disco 2: $disco2"
+    fi
+    if [ ! -e /dev/md0 ]; then
+        sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 $disco1 $disco2
+        sudo update-initramfs -u
+        sudo mkfs.ext4 /dev/md0
+    else
+        echo "El RAID ya existe"
+    fi
+    if [ ! -d /mnt/hdd ];then
+        sudo mkdir -p /mnt/hdd
+    
+    fi
+    sudo bash -c 'cat >> /etc/fstab << EOF
+/dev/md0    /mnt/hdd    ext4    defaults    0   2
 EOF'
-sudo mount -a
+    sudo mount -a
+    sudo chmod -R 777 /mnt/hdd/
+}
 
-# Comprobar actualización
-echo "Actualizando repertorios..."
-sudo apt-get update -y &> /dev/null
-sudo apt-get upgrade -y &> /dev/null
-echo "Repertorios actualizados correctamente."
+installApps(){
+    sudo apt-get update -y
+    sudo apt-get upgrade -y
+    if ! command -v smbpasswd &> /dev/null; then
+        sudo apt install samba -y
+    else
+        echo "Samba ya está instalado."
+    fi
+    if ! command -v fail2ban-client &> /dev/null; then
+        sudo apt install fail2ban -y
+    else
+        echo "Fail2Ban ya está instalado."
+    fi
+    if ! command -v docker &> /dev/null; then
+        curl -sSL https://get.docker.com | sh
+    else
+        echo "Docker ya está instalado"
+    fi
+}
 
-# Comprobar si Fail2Ban ya está instalado
-if ! command -v fail2ban-client &> /dev/null; then
-    echo "Fail2Ban no está instalado. Instalando Fail2Ban..."
-    sudo apt install fail2ban -y &> /dev/null
-    echo "Fail2Ban instalado correctamente."
-else
-    echo "Fail2Ban ya está instalado."
-fi
+dockerContainers(){
+    if ! sudo docker ps -a | grep portainer &> /dev/null; then
+        sudo docker volume create portainer_data
+        sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+    else
+        echo "Portainer ya instalado."
+    fi
+    echo "Arrancando contenedores..."
+    sudo docker compose -f "$rutaScript"/docker/authelia/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d
+    sudo docker compose -f "$rutaScript"/docker/homarr/docker-compose.yml up -d
+}
 
-# Comprobar si Samba ya está instalado
-if ! command -v smbpasswd &> /dev/null; then
-    echo "Samba no está instalado. Instalando Samba..."
-    sudo apt install samba -y &> /dev/null
-    echo "Samba instalado correctamente."
-else
-    echo "Samba ya está instalado."
-fi
-
-# Comprobar si Docker ya está instalado
-if ! command -v docker &> /dev/null; then
-    echo "Docker no está instalado. Instalando Docker..."
-    # Instalación de Docker
-    curl -sSL https://get.docker.com | sh  &> /dev/null
-    # Añade el usuario actual al grupo docker
-    echo "Usuario '"$USER"' añadido al grupo 'docker'."
-    sudo usermod -aG docker "$USER"  &> /dev/null
-    echo "Docker instalado correctamente."
-else
-    echo "Docker ya está instalado."
-fi
-
-# Instalación de Portainer
-if [ ! "$(sudo docker ps -a | grep portainer)" ]; then
-    echo "Instalando Portainer..."
-    sudo docker volume create portainer_data > /dev/null
-    sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest  > /dev/null
-    echo "Portainer instalado correctamente."
-else
-    echo "Portainer ya está instalado."
-fi
-
-read -sp "Presiona enter para continuar con la configuración de los contenedores..."
-
-clear
-# Configurar Wireguard + Pihole
-read -p "Quieres crear una nueva configuración de Wireguard? [y/n] " opcion
-case $opcion in
-    [Yy]* ) sudo $rutaScript/docker/wg-pihole/config.sh;;
-    *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
+read -p "¿Tienes dos discos extras conectados para crear un RAID? (y/n): " respuestaDiscoExtra
+case $respuestaDiscoExtra in
+    [Yy]*)
+        crearRaid
+        ;;
+    [Nn]*)
+        echo "Operación cancelada por falta de discos."
+        ;;
+    *)
+        echo "Respuesta no válida. Se asume 'no'."
+        ;;
 esac
-
-clear
-# Configurar DDNS Cloudflare
-read -p "Quieres crear una nueva configuración de DDNS? [y/n] " opcion
-case $opcion in
-    [Yy]* ) sudo $rutaScript/docker/cloudflare/config.sh;;
-    *) read -sp "Se usará la configuración por defecto. Presiona 'enter' para continuar...";;
-esac
-
-echo ""
-echo "Arrancando contenedores..."
-sudo docker compose -f "$rutaScript"/docker/authelia/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/nginx/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/monitorizacion/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d 2> /dev/null
-sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d 2> /dev/null
-
+installApps
+dockerContainers
