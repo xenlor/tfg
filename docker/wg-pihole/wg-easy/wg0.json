@@ -70,6 +70,50 @@
       "createdAt": "2024-03-20T18:12:39.644Z",
       "updatedAt": "2024-03-20T18:12:39.644Z",
       "enabled": true
+    },
+    "73b18d85-927b-408d-85f6-5166a967693d": {
+      "id": "73b18d85-927b-408d-85f6-5166a967693d",
+      "name": "pc-vela",
+      "address": "10.8.0.8",
+      "privateKey": "0IaygFNMTGSffG4ZXZOY7dAg2Cj1f49Umfy1HX6oOlM=",
+      "publicKey": "P1iD264pt+NKmWXFnkfJ3jjMWuJxkB58C/q6O8rIFU4=",
+      "preSharedKey": "6pVudt1D1LxLqG1GSkuifch5pBs3480/BUqOSmzGLKI=",
+      "createdAt": "2024-04-02T16:59:09.778Z",
+      "updatedAt": "2024-04-02T16:59:09.778Z",
+      "enabled": true
+    },
+    "9d4f7c92-54f4-459f-862e-accc9c78d6c2": {
+      "id": "9d4f7c92-54f4-459f-862e-accc9c78d6c2",
+      "name": "pc-dani",
+      "address": "10.8.0.9",
+      "privateKey": "6Ml8jR/thHlnmiHeoSn5dTZZTPrnRtYv6H7eHErIAH8=",
+      "publicKey": "qduK1wrTVK9nNlu2UkqCBv+1PTH+lijOPdXbUoAskFU=",
+      "preSharedKey": "MrZ+/pG6N2XVha4k1ETF79q2jb1F49bjL5+stdvy8AE=",
+      "createdAt": "2024-04-02T21:30:45.076Z",
+      "updatedAt": "2024-04-02T21:32:54.615Z",
+      "enabled": true
+    },
+    "43eab33c-60bb-4030-ad82-0f87678a2077": {
+      "id": "43eab33c-60bb-4030-ad82-0f87678a2077",
+      "name": "keke",
+      "address": "10.8.0.10",
+      "privateKey": "yDu3OsGLYnax7oqc0R9JuXiZgljMrdhyDzG0Q9W4LnA=",
+      "publicKey": "cU6TC7ri4MlDrC36TkL3ieAbUe9Is4Er3VjEj8A6C20=",
+      "preSharedKey": "WbZ7C2ZzrRrhUJx/TT2r9pPlfyupNb4BLc/mFhXGi0k=",
+      "createdAt": "2024-04-05T14:11:49.661Z",
+      "updatedAt": "2024-04-05T14:11:49.661Z",
+      "enabled": true
+    },
+    "2d88deb4-a135-4cf1-ad84-d7b813970a95": {
+      "id": "2d88deb4-a135-4cf1-ad84-d7b813970a95",
+      "name": "pc-angel",
+      "address": "10.8.0.11",
+      "privateKey": "mIwxj+PwydFJBVkP8Wo/YdRZmtwT2AC1nS0sy1mWBG4=",
+      "publicKey": "HrUySsEOPv0X4rIFfqOSLFtMfV9CCe4Luz6RDNiMzRs=",
+      "preSharedKey": "uqogIiLQ4FUnT8+mxIjvoWPIQI5W7pbMkybebeocoQQ=",
+      "createdAt": "2024-05-03T08:31:45.615Z",
+      "updatedAt": "2024-05-03T08:31:45.615Z",
+      "enabled": true
     }
   }
 }

@@ -1,0 +1,17 @@
+{
+	"ulid": "01HWYTX3C32T5WHBHERR8PZZF7",
+	"minTime": 1714716000571,
+	"maxTime": 1714723200000,
+	"stats": {
+		"numSamples": 5469361,
+		"numSeries": 4331,
+		"numChunks": 44912
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HWYTX3C32T5WHBHERR8PZZF7"
+		]
+	},
+	"version": 1
+}

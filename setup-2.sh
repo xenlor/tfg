@@ -5,6 +5,14 @@ rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 crearRaid(){
     sudo apt install mdadm -y
+    sudo lsblk -d -o NAME,SIZE 
+    read -p "ingresa el nombre de los discos, separados por un espacio (ej. /dev/sda1 /dev/sdb1): " disco1 disco2
+    if [ -z $disco1 ] || [ -z $disco2 ];then
+        echo "Error: Debes ingresar dos discos para hacer el RAID 0."
+    else
+        echo "Disco 1: $disco1"
+        echo "Disco 2: $disco2"
+    fi
     if [ ! -e /dev/md0 ]; then
         sudo mdadm --create --verbose /dev/md0 --level=0 --raid-devices=2 $disco1 $disco2
         sudo update-initramfs -u
@@ -57,7 +65,6 @@ dockerContainers(){
     sudo docker compose -f "$rutaScript"/docker/cloudflare/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/duplicati/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
-    sudo docker compose -f "$rutaScript"/docker/heimdall/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/homarr/docker-compose.yml up -d
 }

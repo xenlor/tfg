@@ -1,0 +1,17 @@
+{
+	"ulid": "01HWZ1RTM39AZBK12AAQ78CEWV",
+	"minTime": 1714723200318,
+	"maxTime": 1714730400000,
+	"stats": {
+		"numSamples": 5469676,
+		"numSeries": 4494,
+		"numChunks": 45099
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01HWZ1RTM39AZBK12AAQ78CEWV"
+		]
+	},
+	"version": 1
+}

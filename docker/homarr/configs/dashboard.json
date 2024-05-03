@@ -3,63 +3,34 @@
   "configProperties": {
     "name": "dashboard"
   },
-  "categories": [],
+  "categories": [
+    {
+      "id": "b659f9e3-be0e-4835-9b45-073edd4cd232",
+      "name": "Aplicaciones",
+      "position": 1,
+      "type": "category"
+    },
+    {
+      "id": "6e10320e-98fb-46d9-b9be-0f07bae29f63",
+      "name": "Herramientas",
+      "position": 2
+    }
+  ],
   "wrappers": [
     {
       "id": "default",
       "position": 0
+    },
+    {
+      "id": "070851d0-be98-46d5-9209-42c8708cbe31",
+      "position": 1
+    },
+    {
+      "id": "8db43304-c68f-407d-818e-62aacb2f0e7c",
+      "position": 2
     }
   ],
   "apps": [
-    {
-      "id": "7fa1934e-7b25-4c38-a286-b305184d7523",
-      "name": "Grafana",
-      "url": "http://192.168.1.10:3000",
-      "appearance": {
-        "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/grafana.svg",
-        "appNameStatus": "normal",
-        "positionAppName": "column",
-        "lineClampAppName": 1,
-        "appNameFontSize": 16
-      },
-      "network": {
-        "enabledStatusChecker": true,
-        "statusCodes": [
-          "200",
-          "301",
-          "302",
-          "304",
-          "307",
-          "308"
-        ]
-      },
-      "behaviour": {
-        "isOpeningNewTab": true,
-        "externalUrl": "https://grafana.xenlor.com"
-      },
-      "area": {
-        "type": "wrapper",
-        "properties": {
-          "id": "default"
-        }
-      },
-      "shape": {
-        "lg": {
-          "location": {
-            "x": 2,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        }
-      },
-      "integration": {
-        "type": null,
-        "properties": []
-      }
-    },
     {
       "id": "9cee07d4-e25d-49d5-ada5-832bbb29006c",
       "name": "Nginx Proxy Manager",
@@ -87,9 +58,9 @@
         "externalUrl": "https://proxy.xenlor.com"
       },
       "area": {
-        "type": "wrapper",
+        "type": "category",
         "properties": {
-          "id": "default"
+          "id": "6e10320e-98fb-46d9-b9be-0f07bae29f63"
         }
       },
       "shape": {
@@ -130,55 +101,6 @@
       }
     },
     {
-      "id": "ed62350f-e41d-44ee-a62d-aeee858eb602",
-      "name": "Duplicati",
-      "url": "http://192.168.1.10:8200",
-      "appearance": {
-        "iconUrl": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus_icons/src/apps_duplicati.svg",
-        "appNameStatus": "normal",
-        "positionAppName": "column",
-        "lineClampAppName": 1,
-        "appNameFontSize": 16
-      },
-      "network": {
-        "enabledStatusChecker": true,
-        "statusCodes": [
-          "200",
-          "301",
-          "302",
-          "304",
-          "307",
-          "308"
-        ]
-      },
-      "behaviour": {
-        "isOpeningNewTab": true,
-        "externalUrl": "http://192.168.1.10:8200"
-      },
-      "area": {
-        "type": "wrapper",
-        "properties": {
-          "id": "default"
-        }
-      },
-      "shape": {
-        "lg": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        }
-      },
-      "integration": {
-        "type": null,
-        "properties": []
-      }
-    },
-    {
       "id": "63a70a97-5ed1-4264-b8c7-defa48f77901",
       "name": "FileBrowser",
       "url": "http://192.168.1.10:8040",
@@ -205,13 +127,33 @@
         "externalUrl": "https://nas.xenlor.com"
       },
       "area": {
-        "type": "wrapper",
+        "type": "category",
         "properties": {
-          "id": "default"
+          "id": "b659f9e3-be0e-4835-9b45-073edd4cd232"
         }
       },
       "shape": {
         "lg": {
+          "location": {
+            "x": 1,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "md": {
+          "location": {
+            "x": 1,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "sm": {
           "location": {
             "x": 1,
             "y": 0
@@ -254,16 +196,36 @@
         "externalUrl": "https://vpn.xenlor.com"
       },
       "area": {
-        "type": "wrapper",
+        "type": "category",
         "properties": {
-          "id": "default"
+          "id": "6e10320e-98fb-46d9-b9be-0f07bae29f63"
         }
       },
       "shape": {
         "lg": {
           "location": {
-            "x": 4,
+            "x": 2,
             "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "md": {
+          "location": {
+            "x": 3,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "sm": {
+          "location": {
+            "x": 1,
+            "y": 1
           },
           "size": {
             "width": 1,
@@ -303,16 +265,16 @@
         "externalUrl": "https://portainer.xenlor.com"
       },
       "area": {
-        "type": "wrapper",
+        "type": "category",
         "properties": {
-          "id": "default"
+          "id": "b659f9e3-be0e-4835-9b45-073edd4cd232"
         }
       },
       "shape": {
         "lg": {
           "location": {
-            "x": 0,
-            "y": 1
+            "x": 2,
+            "y": 0
           },
           "size": {
             "width": 1,
@@ -321,7 +283,7 @@
         },
         "md": {
           "location": {
-            "x": 0,
+            "x": 2,
             "y": 0
           },
           "size": {
@@ -332,7 +294,7 @@
         "sm": {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 1
           },
           "size": {
             "width": 1,
@@ -372,15 +334,35 @@
         "externalUrl": "http://pihole.xenlor.com/admin"
       },
       "area": {
-        "type": "wrapper",
+        "type": "category",
         "properties": {
-          "id": "default"
+          "id": "6e10320e-98fb-46d9-b9be-0f07bae29f63"
         }
       },
       "shape": {
         "lg": {
           "location": {
             "x": 1,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "md": {
+          "location": {
+            "x": 2,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "sm": {
+          "location": {
+            "x": 0,
             "y": 1
           },
           "size": {
@@ -399,111 +381,147 @@
           }
         ]
       }
+    },
+    {
+      "id": "ed62350f-e41d-44ee-a62d-aeee858eb602",
+      "name": "Duplicati",
+      "url": "http://192.168.1.10:8200",
+      "appearance": {
+        "iconUrl": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus_icons/src/apps_duplicati.svg",
+        "appNameStatus": "normal",
+        "positionAppName": "column",
+        "lineClampAppName": 1,
+        "appNameFontSize": 16
+      },
+      "network": {
+        "enabledStatusChecker": true,
+        "statusCodes": [
+          "200",
+          "301",
+          "302",
+          "304",
+          "307",
+          "308"
+        ]
+      },
+      "behaviour": {
+        "isOpeningNewTab": true,
+        "externalUrl": "https://duplicati.xenlor.com"
+      },
+      "area": {
+        "type": "category",
+        "properties": {
+          "id": "b659f9e3-be0e-4835-9b45-073edd4cd232"
+        }
+      },
+      "shape": {
+        "lg": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "md": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "sm": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        }
+      },
+      "integration": {
+        "type": null,
+        "properties": []
+      }
+    },
+    {
+      "id": "7fa1934e-7b25-4c38-a286-b305184d7523",
+      "name": "Grafana",
+      "url": "http://192.168.1.10:3000",
+      "appearance": {
+        "iconUrl": "https://cdn.jsdelivr.net/gh/loganmarchione/homelab-svg-assets/assets/grafana.svg",
+        "appNameStatus": "normal",
+        "positionAppName": "column",
+        "lineClampAppName": 1,
+        "appNameFontSize": 16
+      },
+      "network": {
+        "enabledStatusChecker": true,
+        "statusCodes": [
+          "200",
+          "301",
+          "302",
+          "304",
+          "307",
+          "308"
+        ]
+      },
+      "behaviour": {
+        "isOpeningNewTab": true,
+        "externalUrl": "https://grafana.xenlor.com"
+      },
+      "area": {
+        "type": "category",
+        "properties": {
+          "id": "6e10320e-98fb-46d9-b9be-0f07bae29f63"
+        }
+      },
+      "shape": {
+        "lg": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "md": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "sm": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 1,
+            "height": 1
+          }
+        }
+      },
+      "integration": {
+        "type": null,
+        "properties": []
+      }
     }
   ],
   "widgets": [
-    {
-      "id": "e9a0b261-fa25-4bac-8910-b5defde58e52",
-      "type": "weather",
-      "properties": {
-        "displayInFahrenheit": false,
-        "displayCityName": true,
-        "displayWeekly": false,
-        "forecastDays": 7,
-        "location": {
-          "name": "Burgos",
-          "latitude": 42.34106,
-          "longitude": -3.70184
-        }
-      },
-      "area": {
-        "type": "sidebar",
-        "properties": {
-          "location": "left"
-        }
-      },
-      "shape": {
-        "sm": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        },
-        "md": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        },
-        "lg": {
-          "location": {
-            "x": 0,
-            "y": 3
-          },
-          "size": {
-            "width": 2,
-            "height": 1
-          }
-        }
-      }
-    },
-    {
-      "id": "0951aaba-eedf-420f-9056-e02997ed69e6",
-      "type": "date",
-      "properties": {
-        "timezone": "Europe/Madrid",
-        "customTitle": "",
-        "display24HourFormat": false,
-        "dateFormat": "dddd, MMMM D",
-        "titleState": "both"
-      },
-      "area": {
-        "type": "sidebar",
-        "properties": {
-          "location": "left"
-        }
-      },
-      "shape": {
-        "sm": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        },
-        "md": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 1,
-            "height": 1
-          }
-        },
-        "lg": {
-          "location": {
-            "x": 0,
-            "y": 0
-          },
-          "size": {
-            "width": 2,
-            "height": 1
-          }
-        }
-      }
-    },
     {
       "id": "3b26edd0-28d5-4974-b15a-21fca7e24ddb",
       "type": "calendar",
@@ -543,7 +561,7 @@
         "lg": {
           "location": {
             "x": 0,
-            "y": 1
+            "y": 0
           },
           "size": {
             "width": 2,
@@ -553,23 +571,30 @@
       }
     },
     {
-      "id": "3864b65f-38fb-4a31-b171-1c802969e072",
-      "type": "dns-hole-summary",
+      "id": "e9a0b261-fa25-4bac-8910-b5defde58e52",
+      "type": "weather",
       "properties": {
-        "usePiHoleColors": true,
-        "layout": "grid"
+        "displayInFahrenheit": false,
+        "displayCityName": true,
+        "displayWeekly": false,
+        "forecastDays": 3,
+        "location": {
+          "name": "Burgos",
+          "latitude": 42.34106,
+          "longitude": -3.70184
+        }
       },
       "area": {
-        "type": "wrapper",
+        "type": "sidebar",
         "properties": {
-          "id": "default"
+          "location": "left"
         }
       },
       "shape": {
         "sm": {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 2
           },
           "size": {
             "width": 2,
@@ -579,7 +604,7 @@
         "md": {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 2
           },
           "size": {
             "width": 2,
@@ -588,33 +613,37 @@
         },
         "lg": {
           "location": {
-            "x": 2,
-            "y": 1
+            "x": 0,
+            "y": 3
           },
           "size": {
             "width": 2,
-            "height": 2
+            "height": 1
           }
         }
       }
     },
     {
-      "id": "7ea501e7-a8cb-47ae-aa5f-9aa27bf4b45c",
-      "type": "dns-hole-controls",
+      "id": "0951aaba-eedf-420f-9056-e02997ed69e6",
+      "type": "date",
       "properties": {
-        "showToggleAllButtons": false
+        "timezone": "Europe/Madrid",
+        "customTitle": "España",
+        "display24HourFormat": true,
+        "dateFormat": "dddd, D MMMM",
+        "titleState": "both"
       },
       "area": {
-        "type": "wrapper",
+        "type": "sidebar",
         "properties": {
-          "id": "default"
+          "location": "left"
         }
       },
       "shape": {
         "sm": {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 3
           },
           "size": {
             "width": 2,
@@ -624,7 +653,7 @@
         "md": {
           "location": {
             "x": 0,
-            "y": 0
+            "y": 3
           },
           "size": {
             "width": 2,
@@ -642,6 +671,52 @@
           }
         }
       }
+    },
+    {
+      "id": "3864b65f-38fb-4a31-b171-1c802969e072",
+      "type": "dns-hole-summary",
+      "properties": {
+        "usePiHoleColors": true,
+        "layout": "grid"
+      },
+      "area": {
+        "type": "sidebar",
+        "properties": {
+          "location": "right"
+        }
+      },
+      "shape": {
+        "sm": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 2,
+            "height": 2
+          }
+        },
+        "md": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 2,
+            "height": 3
+          }
+        },
+        "lg": {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "size": {
+            "width": 2,
+            "height": 2
+          }
+        }
+      }
     }
   ],
   "settings": {
@@ -654,31 +729,31 @@
     "customization": {
       "layout": {
         "enabledLeftSidebar": true,
-        "enabledRightSidebar": false,
+        "enabledRightSidebar": true,
         "enabledDocker": false,
         "enabledPing": true,
         "enabledSearchbar": true
       },
-      "pageTitle": "Homarr ⭐️",
-      "logoImageUrl": "/imgs/logo/logo.png",
-      "faviconUrl": "/imgs/favicon/favicon-squared.png",
+      "pageTitle": "TFG - Esteban Castillo Loren ",
+      "logoImageUrl": "/icons/juande-nobk.png",
+      "faviconUrl": "/icons/juande.ico",
       "backgroundImageUrl": "",
       "customCss": "",
       "colors": {
-        "primary": "red",
-        "secondary": "yellow",
-        "shade": 7
+        "primary": "indigo",
+        "secondary": "gray",
+        "shade": 6
       },
       "appOpacity": 100,
       "gridstack": {
-        "columnCountSmall": 3,
-        "columnCountMedium": 6,
-        "columnCountLarge": 10
+        "columnCountSmall": 2,
+        "columnCountMedium": 5,
+        "columnCountLarge": 8
       },
       "backgroundImageAttachment": "fixed",
       "backgroundImageRepeat": "no-repeat",
       "backgroundImageSize": "cover",
-      "metaTitle": ""
+      "metaTitle": "TFG - ECL"
     },
     "access": {
       "allowGuests": true
