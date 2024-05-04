@@ -4,12 +4,22 @@ clear
 rutaScript=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
 
 crearRaid(){
-    sudo apt install mdadm -y
+    if ! command -v mdadm &> /dev/null;then
+        sudo apt install mdadm -y
+        clear
+        echo "'mdadm' instalado correctamente."
+    else
+        clear
+        echo "'mdadm' ya está instalado.'"
+    fi
+    read -p "Presiona 'enter' para continuar... "
+    clear
     sudo lsblk -d -o NAME,SIZE 
     read -p "ingresa el nombre de los discos, separados por un espacio (ej. /dev/sda1 /dev/sdb1): " disco1 disco2
     if [ -z $disco1 ] || [ -z $disco2 ];then
         echo "Error: Debes ingresar dos discos para hacer el RAID 0."
     else
+        read -p "'mdadm' instalado correctamente. Presiona 'enter' para continuar..."
         echo "Disco 1: $disco1"
         echo "Disco 2: $disco2"
     fi

@@ -55,7 +55,7 @@ access_control:
       policy: bypass
     - domain:
         - "*.xenlor.com"
-      policy: bypass
+      policy: two_factor
       networks:
         - 192.168.1.0/24
     - domain:
@@ -84,7 +84,7 @@ notifier:
   disable_startup_check: true #true/false
   smtp:
     username: estebancastillo.cct@gmail.com #tu usuario de correo
-    password: wich nmtv etxh abhr #Creamos una contraseña de aplicacion en goggle, la copiamos y la pegamos aquí
+    password: wich nmtv etxh abhr #Creamos una contraseña de aplicacion en google, la copiamos y la pegamos aquí
     host: smtp.gmail.com #email smtp server, este es correcto si usas gmail
     port: 587 #email smtp port, es este el que se utiliza si usas gmail
     sender: estebancastillo.cct@gmail.com #el correo de quien lo envia, poen el mismo que tu usuario
