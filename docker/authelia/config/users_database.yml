@@ -1,16 +1,16 @@
 users:
-  xenlor: #username for user 1. Cambia el nombre al que más te guste, este será el que usemos para el login
-    displayname: "xenlor" #Cambia el nombre al que más te guste, introducelo entre las comillas
-    password: "$argon2id$v=19$m=1024,t=1,p=8$WVNGQnV5aW1zWEhYanV3Rw$U21CMnqMHm3Mgaq4CnxhC8Gzh5tNWRzqFnxnGVKOrgo"
-    #La creamos con https://argon2.online/
-    #En plain text input, ponemos la contraseña que queremos para hacer el login en authelia
-    #Seleccionamos el boton de argon2id
-    #Pulsamos en la tuerca de salt y nos deben salir unas letras en ese recuadro
-    #Configramos con los siguientes parametros parallelism Factor: 8 memory cost: 1024 iterations: 1 hash length: 32
-    #Pulsamos en generate hash y nos debe dar algo asi en el campo outputin Encoded Form $argon2id$v=19$m=1024,t=1,p=8$NTEwNGFYVHNGNlo2OGxwOA$rPYzg2lYoNH7MQ5pv6m3isHCCcJYnf+1A/uIiMUrUhE
-
-    email: stbnloren@gmail.com #tu correeo electronico
-    groups: #si quieres crear un grupo o grupos, cambia los nombres a continuacion
+  nombre_usuario: # Cambia el nombre al que más te guste, este será el que usemos para el login
+    displayname: "tu usuario" # Cambia el nombre al que más te guste, introducelo entre las comillas
+    password: "$argon2id$v=19$m=1024,t=1,p=8$WVNGQnV5aW1zWEhYanV3Rw$U21CMnqMHm3Mgaq4CnxhC8Gzh5tNWRzqFnxnGVKOrgo" # Debes ingresar tu contraseña cifrada con argon2id
+    # La creamos con https://argon2.online/
+    # En plain text input, ponemos la contraseña que queremos para hacer el login en authelia
+    # Seleccionamos el boton de argon2id
+    # Pulsamos en la tuerca de salt y nos deben salir unas letras en ese recuadro
+    # Configramos con los siguientes parametros parallelism Factor: 8 memory cost: 1024 iterations: 1 hash length: 32
+    # Pulsamos en generate hash y nos debe dar algo asi en el campo outputin Encoded Form $argon2id$v=19$m=1024,t=1,p=8$NTEwNGFYVHNGNlo2OGxwOA$rPYzg2lYoNH7MQ5pv6m3isHCCcJYnf+1A/uIiMUrUhE
+    # Debería quedar algo así --> https://prnt.sc/xuv-R88PsqBG 
+    email: tucorreo@gmail.com #tu correeo electronico
+    groups: # no tocar
       - admins
       - dev
 #Cada vez que creemos un usuario, hay que parar y arrancar el contenedor de authelia para que ejecute los cambios.

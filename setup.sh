@@ -77,6 +77,7 @@ dockerContainers(){
     sudo docker compose -f "$rutaScript"/docker/filebrowser/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/wg-pihole/docker-compose.yml up -d
     sudo docker compose -f "$rutaScript"/docker/homarr/docker-compose.yml up -d
+    sudo docker restart portainer
 }
 
 read -p "¿Tienes dos discos extras conectados para crear un RAID? (y/n): " respuestaDiscoExtra
@@ -93,3 +94,5 @@ case $respuestaDiscoExtra in
 esac
 installApps
 dockerContainers
+echo "Ya está todo listo!"
+read -p "Presiona 'enter' para continuar..."
