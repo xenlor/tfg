@@ -4,7 +4,7 @@ services:
   wg-easy:
     environment:
       - WG_HOST=tudominio.es #tu ip pública / dominio
-      - PASSWORD=contraseña # la contraseña para el panel (opcional)
+      - PASSWORD= # la contraseña para el panel (opcional)
       - WG_DEFAULT_DNS=10.8.1.3
       - WG_DEFAULT_ADDRESS=10.8.0.x
     image: ghcr.io/wg-easy/wg-easy
@@ -29,7 +29,7 @@ services:
     image: pihole/pihole
     container_name: pihole
     environment:
-      - WEBPASSWORD=contraseña # la contraseña para el panel (opcional)
+      - WEBPASSWORD= # la contraseña para el panel (opcional)
     volumes:
       - './pihole/etc-pihole:/etc/pihole'
       - './pihole/etc-dnsmasq.d:/etc/dnsmasq.d'

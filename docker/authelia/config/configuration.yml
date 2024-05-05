@@ -46,7 +46,7 @@ authentication_backend: # No tocar nada
       parallelism: 8
 
 access_control:
-  default_policy: deny # las políticas pueden ser: deny, one_factor, two_factor y bypass
+  default_policy: bypass # las políticas pueden ser: deny, one_factor, two_factor y bypass
   rules:
     ## bypass rule
     - domain:

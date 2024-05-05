@@ -19,7 +19,6 @@ crearRaid(){
     if [ -z $disco1 ] || [ -z $disco2 ];then
         echo "Error: Debes ingresar dos discos para hacer el RAID 0."
     else
-        read -p "'mdadm' instalado correctamente. Presiona 'enter' para continuar..."
         echo "Disco 1: $disco1"
         echo "Disco 2: $disco2"
     fi
