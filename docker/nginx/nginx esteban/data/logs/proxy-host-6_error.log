@@ -1,0 +1,8 @@
+2024/04/30 14:47:27 [warn] 453#453: *56006 using uninitialized "server" variable while logging request, client: 146.70.192.182, server: xenlor.com
+2024/05/01 03:02:52 [warn] 471#471: *57258 using uninitialized "server" variable while logging request, client: 139.59.234.191, server: xenlor.com
+2024/05/01 09:47:01 [warn] 480#480: *59421 using uninitialized "server" variable while logging request, client: 36.99.136.136, server: xenlor.com, request: "GET / HTTP/1.1", host: "xenlor.com:443"
+2024/05/01 21:05:22 [warn] 499#499: *67268 using uninitialized "server" variable while logging request, client: 162.142.125.112, server: xenlor.com, request: "GET / HTTP/1.1", host: "xenlor.com:443"
+2024/05/02 14:32:41 [warn] 531#531: *72610 using uninitialized "server" variable while logging request, client: 34.162.163.189, server: xenlor.com
+2024/05/02 19:25:30 [warn] 540#540: *75876 using uninitialized "server" variable while logging request, client: 146.70.192.108, server: xenlor.com
+2024/05/02 20:31:13 [warn] 540#540: *75920 using uninitialized "server" variable while logging request, client: 199.45.154.51, server: xenlor.com, request: "GET / HTTP/1.1", host: "xenlor.com:443"
+2024/05/02 21:54:44 [warn] 540#540: *76094 using uninitialized "server" variable while logging request, client: 111.7.100.28, server: xenlor.com, request: "GET / HTTP/1.1", host: "xenlor.com:443"
